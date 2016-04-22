@@ -12,6 +12,9 @@ RUN apt-get install -y --no-install-recommends amavisd-new \
                                                cron \
                                                supervisor
 
+ENV AMAVIS_REINJECTION_HOST postfix
+ENV AMAVIS_REINJECTION_PORT 10025
+
 RUN gpasswd -a clamav amavis
 
 RUN mkdir -p /etc/amavis/conf.d

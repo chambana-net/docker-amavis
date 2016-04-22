@@ -10,8 +10,8 @@ MSG "Configuring Amavis..."
 
 URI="'lmtp:[$(getent hosts $AMAVIS_REINJECTION_HOST  | awk '{ print $1 }')]:$AMAVIS_REINJECTION_PORT'"
 
-sed -i -e "s/^\$notify_method\ .=\.*/\$notify_method\ =\ $URI/" \
-  -e "s/^\$forward_method\ .=\.*/\$forward_method\ =\ $URI/" \
+sed -i -e "s/^\$notify_method\ *=.*/\$notify_method\ =\ $URI/" \
+  -e "s/^\$forward_method\ *=.*/\$forward_method\ =\ $URI/" \
 	/etc/amavis/conf.d/50-user
 
 supervisord -c /etc/supervisor/supervisord.conf 

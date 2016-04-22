@@ -1,0 +1,30 @@
+FROM chambana/base:latest
+
+MAINTAINER Josh King <jking@chambana.net>
+
+RUN apt-get -qq update
+
+RUN apt-get install -y --no-install-recommends amavisd-new \
+                                               spamassassin \
+                                               clamav \
+                                               clamav-daemon \
+                                               clamav-freshclam \
+                                               cron \
+                                               supervisor
+
+RUN gpasswd -a clamav amavis
+
+RUN mkdir -p /etc/amavis/conf.d
+ADD files/amavis/50-user /etc/amavis/conf.d/50-user
+RUN mkdir -p /etc/clamav
+ADD files/clamav/clamd.conf /etc/clamav/clamd.conf
+
+ADD files/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+
+EXPOSE 10024
+
+## Add startup script.
+ADD bin/init.sh /opt/chambana/bin/init.sh
+RUN chmod 0755 /opt/chambana/bin/init.sh
+
+CMD ["/opt/chambana/bin/init.sh"]

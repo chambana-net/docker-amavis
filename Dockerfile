@@ -2,15 +2,15 @@ FROM chambana/base:latest
 
 MAINTAINER Josh King <jking@chambana.net>
 
-RUN apt-get -qq update
-
-RUN apt-get install -y --no-install-recommends amavisd-new \
+RUN apt-get -qq update && \
+    apt-get install -y --no-install-recommends amavisd-new \
                                                spamassassin \
                                                clamav \
                                                clamav-daemon \
                                                clamav-freshclam \
                                                cron \
-                                               supervisor
+                                               supervisor && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV AMAVIS_REINJECTION_HOST postfix
 ENV AMAVIS_REINJECTION_PORT 10025

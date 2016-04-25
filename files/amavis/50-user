@@ -24,6 +24,10 @@ use strict;
 @bypass_spam_checks_maps = (
    \%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);
 
+# Bind to all addresses
+
+$inet_socket_bind = undef;
+
 # Reinject email into postfix
 
 $notify_method = 

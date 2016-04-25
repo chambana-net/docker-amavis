@@ -28,6 +28,10 @@ use strict;
 
 $inet_socket_bind = undef;
 
+# Accept only from local RFC1918 networks
+
+@inet_acl = qw( 127/8 10/8 172.16/12 192.168/16 );
+
 # Reinject email into postfix
 
 $notify_method = 

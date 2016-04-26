@@ -16,6 +16,7 @@ ENV AMAVIS_REINJECTION_HOST postfix
 ENV AMAVIS_REINJECTION_PORT 10025
 
 RUN gpasswd -a clamav amavis
+RUN gpasswd -a amavis clamav
 
 RUN mkdir -p /etc/amavis/conf.d
 ADD files/amavis/50-user /etc/amavis/conf.d/50-user

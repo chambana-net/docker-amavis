@@ -14,4 +14,10 @@ sed -i -e "s/^\$notify_method\ *=.*/\$notify_method\ =\ $URI;/" \
   -e "s/^\$forward_method\ *=.*/\$forward_method\ =\ $URI;/" \
 	/etc/amavis/conf.d/50-user
 
+MSG "Configuring Razor & Pyzor..."
+su - amavis -c 'razor-admin -create'
+su - amavis -c 'razor-admin -register'
+su - amavis -c 'pyzor discover'
+
+MSG "Starting Amavis..."
 supervisord -c /etc/supervisor/supervisord.conf 

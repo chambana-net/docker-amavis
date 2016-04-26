@@ -25,6 +25,7 @@ ADD files/amavis/50-user /etc/amavis/conf.d/50-user
 ADD files/clamav/clamd.conf /etc/clamav/clamd.conf
 ADD files/rsyslog/rsyslog.conf /etc/rsyslog.conf
 RUN freshclam
+RUN chown -R clamav:clamav /var/lib/clamav
 
 ADD files/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 

@@ -8,7 +8,10 @@ RUN apt-get -qq update && \
                                                clamav \
                                                clamav-daemon \
                                                clamav-freshclam \
+                                               pyzor \
+                                               razor \
                                                cron \
+                                               rsyslog \
                                                supervisor && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -18,10 +21,10 @@ ENV AMAVIS_REINJECTION_PORT 10025
 RUN gpasswd -a clamav amavis
 RUN gpasswd -a amavis clamav
 
-RUN mkdir -p /etc/amavis/conf.d
 ADD files/amavis/50-user /etc/amavis/conf.d/50-user
-RUN mkdir -p /etc/clamav
 ADD files/clamav/clamd.conf /etc/clamav/clamd.conf
+ADD files/rsyslog/rsyslog.conf /etc/rsyslog.conf
+RUN freshclam
 
 ADD files/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 

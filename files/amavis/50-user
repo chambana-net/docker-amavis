@@ -34,7 +34,7 @@ $inet_socket_bind = undef;
 
 # Reinject email into postfix
 
-$notify_method = 
-$forward_method = 
+$notify_method = 'smtp:*:*';
+$forward_method = 'smtp:*:*';
 
 1;  # ensure a defined return

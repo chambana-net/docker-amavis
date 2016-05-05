@@ -15,9 +15,6 @@ RUN apt-get -qq update && \
                                                supervisor && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV AMAVIS_REINJECTION_HOST postfix
-ENV AMAVIS_REINJECTION_PORT 10025
-
 RUN gpasswd -a clamav amavis
 RUN gpasswd -a amavis clamav
 

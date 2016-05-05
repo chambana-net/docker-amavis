@@ -15,6 +15,8 @@ RUN apt-get -qq update && \
                                                supervisor && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+VOLUME ["/var/lib/amavis/.spamassassin"]
+
 RUN gpasswd -a clamav amavis
 RUN gpasswd -a amavis clamav
 

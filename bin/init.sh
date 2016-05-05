@@ -2,7 +2,13 @@
 
 . /opt/chambana/lib/common.sh
 
+CHECK_VAR AMAVIS_MAILNAME
+
+MSG "Setting mailname..."
+echo "${AMAVIS_MAILNAME}" > /etc/mailname
+
 if [[ ! -d /var/run/clamav ]]; then
+	MSG "Create clamav runtime directory..."
 	mkdir /var/run/clamav
 	chown -R clamav:clamav /var/run/clamav
 fi

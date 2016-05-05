@@ -39,4 +39,10 @@ $forward_method = 'smtp:*:*';
 
 $sa_tag_level_deflt = -9999; # always add spam info headers
 
+# Don't quarantine mail, just deliver it to spam folder.
+$spam_quarantine_method = undef;
+
+# Don't change subject, just use headers.
+$sa_spam_subject_tag = undef;
+
 1;  # ensure a defined return

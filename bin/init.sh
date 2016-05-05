@@ -2,7 +2,11 @@
 
 . /opt/chambana/lib/common.sh
 
-CHECK_BIN sed
+if [[ ! -d /var/run/clamav ]]; then
+	mkdir /var/run/clamav
+	chown -R clamav:clamav /var/run/clamav
+fi
+
 
 MSG "Configuring Razor & Pyzor..."
 su - amavis -c 'razor-admin -create'

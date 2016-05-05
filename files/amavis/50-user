@@ -37,4 +37,6 @@ $inet_socket_bind = undef;
 $notify_method = 'smtp:*:*';
 $forward_method = 'smtp:*:*';
 
+$sa_tag_level_deflt = -9999; # always add spam info headers
+
 1;  # ensure a defined return

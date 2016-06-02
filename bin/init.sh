@@ -19,5 +19,8 @@ su - amavis -c 'razor-admin -create'
 su - amavis -c 'razor-admin -register'
 su - amavis -c 'pyzor discover'
 
+MSG "Update spamassassin definitions..."
+/usr/bin/sa-update -v
+
 MSG "Starting Amavis..."
 supervisord -c /etc/supervisor/supervisord.conf 

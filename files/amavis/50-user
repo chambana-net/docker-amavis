@@ -38,6 +38,7 @@ $notify_method = 'smtp:*:*';
 $forward_method = 'smtp:*:*';
 
 $sa_tag_level_deflt = -9999; # always add spam info headers
+$sa_tag2_level_deflt = 5.00; # Lower threshold to 5.00
 
 # Don't quarantine mail, just deliver it to spam folder.
 $spam_quarantine_method = undef;

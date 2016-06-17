@@ -23,4 +23,4 @@ MSG "Update spamassassin definitions..."
 /usr/bin/sa-update -v
 
 MSG "Starting Amavis..."
-supervisord -c /etc/supervisor/supervisord.conf 
+exec "$@" 

@@ -33,7 +33,8 @@ ADD files/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 EXPOSE 10024
 
 ## Add startup script.
-ADD bin/init.sh /app/bin/init.sh
-RUN chmod 0755 /app/bin/init.sh
+ADD bin/run.sh /app/bin/run.sh
+RUN chmod 0755 /app/bin/run.sh
 
-CMD ["/app/bin/init.sh"]
+ENTRYPOINT ["/app/bin/run.sh"]
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]

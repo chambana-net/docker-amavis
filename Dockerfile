@@ -3,8 +3,8 @@ FROM chambana/base:latest
 MAINTAINER Josh King <jking@chambana.net>
 
 RUN apt-get -qq update && \
+    apt-get install -y --no-install-recommends spamassassin/jessie-backports && \
     apt-get install -y --no-install-recommends amavisd-new \
-                                               spamassassin \
                                                clamav \
                                                clamav-daemon \
                                                clamav-freshclam \

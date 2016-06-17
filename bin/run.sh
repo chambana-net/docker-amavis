@@ -22,5 +22,8 @@ su - amavis -c 'pyzor discover'
 MSG "Update spamassassin definitions..."
 /usr/bin/sa-update -v
 
+MSG "Setting bayes directory permissions..."
+chmod -R 777 /var/lib/amavis/.spamassassin
+
 MSG "Starting Amavis..."
 exec "$@" 

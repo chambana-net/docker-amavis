@@ -21,6 +21,7 @@ RUN gpasswd -a clamav amavis
 RUN gpasswd -a amavis clamav
 
 ADD files/spamassassin/local.cf /etc/spamassassin/local.cf
+ADD files/default.spamassassin /etc/default/spamassassin
 ADD files/amavis/50-user /etc/amavis/conf.d/50-user
 ADD files/clamav/clamd.conf /etc/clamav/clamd.conf
 ADD files/rsyslog/rsyslog.conf /etc/rsyslog.conf

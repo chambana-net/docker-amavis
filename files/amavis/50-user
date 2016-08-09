@@ -46,4 +46,10 @@ $spam_quarantine_method = undef;
 # Don't change subject, just use headers.
 $sa_spam_subject_tag = undef;
 
+# Turn off "UNCHECKED" notifications for encrypted messages.
+$admin_maps_by_ccat{+CC_UNCHECKED.',1'} = undef;
+
+# Remove "UNCHECKED" from subject line.
+$undecipherable_subject_tag = undef;
+
 1;  # ensure a defined return

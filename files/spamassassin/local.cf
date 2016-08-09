@@ -88,5 +88,5 @@ bayes_path /var/lib/amavis/.spamassassin/bayes
 bayes_file_mode 0777
 
 # Increase bayes scoring
-score BAYES_99  0  0  4.3    4.0
+score BAYES_99  0  0  4.8    4.5
 score BAYES_999 0  0  0.5    0.5

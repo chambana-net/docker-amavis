@@ -52,4 +52,8 @@ $admin_maps_by_ccat{+CC_UNCHECKED.',1'} = undef;
 # Remove "UNCHECKED" from subject line.
 $undecipherable_subject_tag = undef;
 
+# Try and eliminate backscatter UBE messages, only applicable because we PASS spam email
+$warnspamsender = undef;
+$warnvirussender = undef;
+
 1;  # ensure a defined return

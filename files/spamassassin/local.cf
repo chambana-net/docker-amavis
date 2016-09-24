@@ -90,3 +90,6 @@ bayes_file_mode 0777
 # Increase bayes scoring
 score BAYES_99  0  0  4.8    4.5
 score BAYES_999 0  0  0.5    0.5
+
+# Decrease negative score from RP_MATCHES_RCVD
+score RP_MATCHES_RCVD -0.001

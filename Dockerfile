@@ -13,7 +13,7 @@ RUN apt-get -qq update && \
                                                rsyslog \
                                                spamassassin \
                                                supervisor \
-                                               gpg && \
+                                               gnupg && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 VOLUME ["/var/lib/amavis/.spamassassin"]

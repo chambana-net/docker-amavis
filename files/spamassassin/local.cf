@@ -97,3 +97,25 @@ score BAYES_999 0  0  1.2    1.2
 
 # Decrease negative score from RP_MATCHES_RCVD
 score RP_MATCHES_RCVD -0.001
+
+#Adjust scores for SPF FAIL
+score SPF_FAIL 4.0
+score SPF_HELO_FAIL 4.0
+score SPF_HELO_SOFTFAIL 3.0
+score SPF_SOFTFAIL 3.0
+ 
+#adjust DKIM scores
+score DKIM_ADSP_ALL 3.0
+score DKIM_ADSP_DISCARD  10.0
+score DKIM_ADSP_NXDOMAIN 3.0
+
+#dmarc fail
+header CUST_DMARC_FAIL Authentication-Results =~ /dmarc=fail/
+score CUST_DMARC_FAIL 5.0
+ 
+#dmarc pass
+header CUST_DMARC_PASS Authentication-Results =~ /dmarc=pass/
+score CUST_DMARC_PASS -1.0
+ 
+meta CUST_DKIM_SIGNED_INVALID DKIM_SIGNED && !(DKIM_VALID || DKIM_VALID_AU)
+score CUST_DKIM_SIGNED_INVALID 6.0
